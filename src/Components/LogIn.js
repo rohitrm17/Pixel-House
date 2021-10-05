@@ -20,7 +20,7 @@ class LogIn extends Component {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="loginAs">
-                                <Form.Label>SignUp As</Form.Label>
+                                <Form.Label>LogIn As</Form.Label>
                                     <select className="form-control" name="loginAs">
                                         <option selected> - select -</option>
                                         <option value="1">Photographer</option>

@@ -1,5 +1,6 @@
 import { React, Component } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import { LinkContainer } from 'react-router-bootstrap';
 
 class Header extends Component {
 
@@ -7,16 +8,32 @@ class Header extends Component {
         return (
             <Navbar bg="light" expand="xl">
                 <Container>
-                    <Navbar.Brand href="/">Pixel House</Navbar.Brand>
+                    <LinkContainer to="/">
+                    <Navbar.Brand>Pixel House</Navbar.Brand>
+                    </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="#link">On Auction</Nav.Link>
+                            <LinkContainer to="/">
+                                <Nav.Link>Home</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/OnAuction">
+                                <Nav.Link>On Auction</Nav.Link>
+                            </LinkContainer>
                         </Nav>
                         <Nav className="justify-content-end">
-                            <Nav.Link href="/SignUp">Sign Up</Nav.Link>
-                            <Nav.Link href="/LogIn">Log In</Nav.Link>
+                            {!this.props.loggedIn ?
+                            <>
+                            <LinkContainer to="/SignUp">
+                                <Nav.Link>Sign Up</Nav.Link>
+                            </LinkContainer>
+                            <LinkContainer to="/LogIn">
+                                <Nav.Link>Log In</Nav.Link>
+                            </LinkContainer>
+                            </>:
+                            <LinkContainer to="/">
+                                <Nav.Link onClick={this.props.loggedInHandler}>Log Out</Nav.Link>
+                            </LinkContainer>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
