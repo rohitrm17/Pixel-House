@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import StarRating from 'react-star-ratings';
+// import { Link } from "react-router-dom";
+// import StarRating from 'react-star-ratings';
 import logo1 from "../Images/logo1.png";
 
 class PhotoClicked extends Component {
