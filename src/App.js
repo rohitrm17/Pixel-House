@@ -15,6 +15,7 @@ import Auction from './Components/Auction';
 import { useState } from 'react';
 import Footer from './Components/Footer';
 import PhotoClicked from './Components/PhotoClicked';
+import Profile from './Components/Profile';
 function App() {
 
   const [loggedIn , setloggedIn] = useState([true]);
@@ -32,6 +33,8 @@ function App() {
             <Route exact path="/SignUp" render={() => <SignUp></SignUp>}>
             </Route>
             <Route exact path="/LogIn" render={() => <LogIn></LogIn>}>
+            </Route>
+            <Route exact path="/Profile" render={() => <Profile></Profile>}>
             </Route>
             <Route exact path="/OnAuction" render={() => <Auction></Auction>}>
             </Route>

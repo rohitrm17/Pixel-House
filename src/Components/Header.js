@@ -31,9 +31,14 @@ class Header extends Component {
                                 <Nav.Link>Log In</Nav.Link>
                             </LinkContainer>
                             </>:
+                            <>
+                            <LinkContainer to="/Profile">
+                                <Nav.Link>Profile</Nav.Link>
+                            </LinkContainer>
                             <LinkContainer to="/">
                                 <Nav.Link onClick={this.props.loggedInHandler}>Log Out</Nav.Link>
-                            </LinkContainer>}
+                            </LinkContainer>
+                            </>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
