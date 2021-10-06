@@ -3,11 +3,11 @@ import { Card, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 // import logo1 from "../Images/logo1.png";
 
-const ImageData = [{Img:"https://gdurl.com/vpI1", Name:"Joe McNally"},
-{Img:"https://gdurl.com/j3FP", Name:"Rehahn"},
-{Img:"https://gdurl.com/lOmK", Name:"Rathika Ramasamy"},
-{Img:"https://gdurl.com/btOM", Name:"Aishwarya Sridhar"},
-{Img:"https://gdurl.com/72XF", Name:"Jimmy Nelson"}];
+const ImageData = [{Id: 1, Img:"https://gdurl.com/vpI1", Name:"Joe McNally", Desc: "Joe McNally is an American photographer who has contributed to National Geographic. He produces logistically and technically intricate projects with proficient use of light and color. He has done studio work to big productions and has shot conceptual images to aerial photos."},
+{Id: 2, Img:"https://gdurl.com/j3FP", Name:"Rehahn", Desc: "Rehahn born in France, is a photographer based in, Vietnam. Known as the photographer that “captures souls”, he is recognized for his portraits of Vietnam, Cuba, Malaysia and India, and for his cultural preservation work."},
+{Id: 3, Img:"https://gdurl.com/lOmK", Name:"Rathika Ramasamy", Desc: "Hi"},
+{Id: 4, Img:"https://gdurl.com/btOM", Name:"Aishwarya Sridhar", Desc: "Hi"},
+{Id: 5, Img:"https://gdurl.com/72XF", Name:"Jimmy Nelson", Desc: "Hi"}];
 
 class Home extends Component {
 
@@ -19,17 +19,14 @@ class Home extends Component {
                         {Array.from({ length: 5 }).map((_, idx) => (
                             <Col>
                                 <Card>
-                                    <Link to="/PhotoClicked" Style="text-decoration: none; color: black">
-                                        <Card.Img variant="top" src={ImageData[idx].Img} />
+                                    <Link to={{pathname: "/PhotoClicked", state: ImageData[idx].Id}} Style="text-decoration: none; color: black">
+                                        <Card.Img variant="top" src={ImageData[idx].Img} alt={ImageData[idx].Name}/>
                                         <Card.Body>
                                             <Card.Title>{ImageData[idx].Name}</Card.Title>
                                             <Card.Text>
-                                                {idx} Description about the Photographer.
+                                                {ImageData[idx].Desc}
                                             </Card.Text>
                                         </Card.Body>
-                                        <Card.Footer>
-                                            <small className="text-muted">Rating 4</small>
-                                        </Card.Footer>
                                     </Link>
                                 </Card>
                             </Col>
