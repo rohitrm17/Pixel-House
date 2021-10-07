@@ -26,7 +26,7 @@ const con = mysql.createPool({
     host: "localhost",
     user: "root",
     password: "",
-    database: "wt2"
+    database: "pixel house"
 })
 
 // app.get('/',function(req,res){
@@ -78,10 +78,10 @@ app.post('/SignUp',  (req, res) => {
 });
 
 app.post('/LogIn',(req,res)=>{
-    uname = req.body.name;
     email = req.body.email;
     password = req.body.password;
-
+    console.log("email: " + email);
+    console.log("pass: " + password);
     var sql = `SELECT * FROM userdetails where email="${email}" and password="${password}"`;
     con.getConnection(function(err,connection){
         if(err){
@@ -95,16 +95,17 @@ app.post('/LogIn',(req,res)=>{
                     console.log("Error executing",err);
                 }
                 else{
-                    console.log("records" + results.length);
-                    if(results == 0){
+                    console.log("records: " + results.length);
+                    if(results.length == 0){
                         var result = {'success' : 400,'message' : 'failed'};
                         return res.json({
                             data : result
                         })
                     }
                     else{
+                        var result = {'success' : 200,'message' : 'login successful', results};
                         return res.json({
-                            data : results
+                            data : result
                         })
                     }
                 }
@@ -113,10 +114,14 @@ app.post('/LogIn',(req,res)=>{
     })
 })
 
+app.post('/Profile' , (req,res)=>{
+
+})
+
 app.post('/PhotoClicked',(req,res)=>{
     st = req.body.st;
 
-    var sql = `SELECT * FROM photodata where id="${st}"`;
+    var sql = `SELECT url FROM photodata where id="${st}"`;
     con.getConnection(function(err,connection){
         if(err){
             connection.release();

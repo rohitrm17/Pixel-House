@@ -22,7 +22,7 @@ class Header extends Component {
                             </LinkContainer>
                         </Nav>
                         <Nav className="justify-content-end">
-                            {!this.props.loggedIn ?
+                            {this.props.loggedIn == false?
                             <>
                             <LinkContainer to="/SignUp">
                                 <Nav.Link>Sign Up</Nav.Link>
@@ -36,7 +36,7 @@ class Header extends Component {
                                 <Nav.Link>Profile</Nav.Link>
                             </LinkContainer>
                             <LinkContainer to="/">
-                                <Nav.Link onClick={this.props.loggedInHandler}>Log Out</Nav.Link>
+                                <Nav.Link onClick={this.props.loggedInShow}>Log Out</Nav.Link>
                             </LinkContainer>
                             </>}
                         </Nav>

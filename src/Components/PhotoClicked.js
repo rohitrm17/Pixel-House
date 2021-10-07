@@ -2,11 +2,57 @@ import { Card, Row, Col, Container, Button } from "react-bootstrap";
 // import { Link } from "react-router-dom";
 // import StarRating from 'react-star-ratings';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useState } from "react";
+import Axios from 'axios';
 
 function PhotoClicked() {
+
+    // let ids = [];
+    // let urls = [];
+
+    const [urls , setURLs] = useState([]);
+    const funsetURLs = (e , urlList) => {console.log(urlList); 
+        setURLs([...urls , urlList])};
+
+    const fetch = (e) => {
+        //e.preventDefault();
+        // let result = [
+        //     {id : 2,url : "xyz"},
+        //     {id : "",url : ""},
+        // ];
+        // let result;
+
+        Axios.post('http://localhost:3001/PhotoClicked',{st : st}).then((response)=>{
+            console.log("Length is: ",response.data.data.length);
+            // console.log(response)
+            funsetURLs(response['data']['data']);
+            // console.log(result[0]['id'])
+            // for(let i=0;i<response.data.data.length;i++){
+            //     // result[i]['id'] = response.data.data[i]['id'];
+            //     // result[i]['url'] = response.data.data[i]['url'];
+            //     // ids[i] = response.data.data[i]['id'];
+            //     urls.push(response['data']['data'][i]['url']);
+            // }
+            // result = JSON.stringify(response)
+            // console.log("Result id is: "+ids);
+            // console.log("Result is: "+urls);
+            // return urls;
+            //return response['data']['data'];
+        })
+        // return response['data']['data'];
+    //    console.log("Result is"+result);
+    //    return result;
+    // console.log("Result 2 is: "+urls);
+    //    [Object.keys(result)[1]].url
+    //console.log("Result is"+result);
+        
+    }
+
     let history = useHistory();
     let location = useLocation();
-    
+    const st = location.state;
+    const response = fetch();
+
     const AllImages = [
         {ImgId: "101" , Img: "https://gdurl.com/PwPD"},
         {ImgId: "102" , Img: "https://gdurl.com/uHBh"},
@@ -30,21 +76,22 @@ function PhotoClicked() {
         {ImgId: "210" , Img: "https://gdurl.com/YlPt"}
     ];
     
-    const st = location.state;
     return (
         <>
+        {console.log("url.len:" + urls)}
             <Container className="my-4">
                 <Row xs={1} md={3} className="g-4">
-                    {Array.from({ length: AllImages.length }).map((_, idx) => (
+                    {Array.from({ length: urls.length }).map((_, idx) => (
                         <Col>
-                            {AllImages[idx].ImgId[0] == st ?
+                            {/* {AllImages[idx].ImgId[0] == st ? */}
                             <Card style={{ width: '20rem' }}>
-                                <Card.Img variant="top" src={AllImages[idx].Img} />
+                                <Card.Img variant="top" src={urls[idx]} />
                                 <Card.Footer>
                                     <small className="text-muted">Rating 4</small>
                                     <Button className="btn-info btn-sm" Style="margin-left:190px" onClick={()=>history.push("/Buy")}>Buy</Button>
                                 </Card.Footer>
-                            </Card>: ""}
+                            </Card>
+                            {/* : ""} */}
                         </Col>
                     ))}
                 </Row>

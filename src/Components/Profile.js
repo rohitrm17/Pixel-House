@@ -4,6 +4,10 @@ import { Form } from "react-bootstrap";
 
 class Profile extends Component {
 
+    constructor(){
+        
+    }
+
     render() {
         return (
             <>

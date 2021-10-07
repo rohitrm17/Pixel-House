@@ -19,23 +19,24 @@ import Profile from './Components/Profile';
 import Buy from './Components/Buy';
 function App() {
 
-  const [loggedIn , setloggedIn] = useState([true]);
-  const loggedInHandler = () =>{
-    setloggedIn(false);
-  }
-
+  const [loggedIn , setloggedIn] = useState(false);
+  const loggedInClose = () => setloggedIn(true);
+  const loggedInShow = () => setloggedIn(false);
+  const [user , setUser] = useState([{username: 'Anirudh', email: 'anirudh@gmail.com', password: '123'}]);
+  const setLogInUser = (data) => setUser([data]);
+  console.log("userApp: " + user);
   return (
     <>
       <Router>
-        <Header loggedIn={loggedIn} loggedInHandler={loggedInHandler}></Header>
+        <Header loggedIn={loggedIn} loggedInShow={loggedInShow}></Header>
           <Switch>
             <Route exact path="/" render={() => <Home></Home>}>
             </Route>
             <Route exact path="/SignUp" render={() => <SignUp></SignUp>}>
             </Route>
-            <Route exact path="/LogIn" render={() => <LogIn></LogIn>}>
+            <Route exact path="/LogIn" render={() => <LogIn setLogInUser={setLogInUser} loggedInClose={loggedInClose}></LogIn>}>
             </Route>
-            <Route exact path="/Profile" render={() => <Profile></Profile>}>
+            <Route exact path="/Profile" render={() => <Profile user={user}></Profile>}>
             </Route>
             <Route exact path="/OnAuction" render={() => <Auction></Auction>}>
             </Route>
