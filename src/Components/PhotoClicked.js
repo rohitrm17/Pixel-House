@@ -1,9 +1,12 @@
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 // import { Link } from "react-router-dom";
 // import StarRating from 'react-star-ratings';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 
 function PhotoClicked() {
+    let history = useHistory();
+    let location = useLocation();
+    
     const AllImages = [
         {ImgId: "101" , Img: "https://gdurl.com/PwPD"},
         {ImgId: "102" , Img: "https://gdurl.com/uHBh"},
@@ -26,7 +29,7 @@ function PhotoClicked() {
         {ImgId: "209" , Img: "https://gdurl.com/errT"},
         {ImgId: "210" , Img: "https://gdurl.com/YlPt"}
     ];
-    let location = useLocation();
+    
     const st = location.state;
     return (
         <>
@@ -39,7 +42,7 @@ function PhotoClicked() {
                                 <Card.Img variant="top" src={AllImages[idx].Img} />
                                 <Card.Footer>
                                     <small className="text-muted">Rating 4</small>
-                                    <Button className="btn-info btn-sm" Style="margin-left:190px">Buy</Button>
+                                    <Button className="btn-info btn-sm" Style="margin-left:190px" onClick={()=>history.push("/Buy")}>Buy</Button>
                                 </Card.Footer>
                             </Card>: ""}
                         </Col>

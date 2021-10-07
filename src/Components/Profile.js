@@ -63,7 +63,7 @@ class Profile extends Component {
                                         <hr />
                                         <div className="row">
                                             <div className="col-sm-12">
-                                                <Link className="btn btn-info " to="/LogIn">Edit</Link>
+                                                <Link className="btn btn-info " to="#">Edit</Link>
                                             </div>
                                         </div>
                                     </div>
