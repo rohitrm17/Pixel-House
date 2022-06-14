@@ -1,10 +1,13 @@
 {
   "name": "wt_proj",
   "version": "1.0.0",
+  "homepage": "https://rohitrm17.github.io/Pixel-House/",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "proxy": "http://localhost:3001",
   "keywords": [],
