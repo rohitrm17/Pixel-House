@@ -1,13 +1,10 @@
 {
   "name": "wt_proj",
   "version": "1.0.0",
-  "homepage": "https://rohitrm17.github.io",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "start": "node index.js"
   },
   "proxy": "http://localhost:3001",
   "keywords": [],
